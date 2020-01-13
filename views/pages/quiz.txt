@@ -1,0 +1,7 @@
+html
+	head
+		title Random Quiz
+		
+	body
+		for question in questions
+			p! question.question

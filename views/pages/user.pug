@@ -1,0 +1,17 @@
+html
+  head
+    title #{user.username}
+body
+  include header.pug
+  h1 #{user.username}
+  if loggedName == user.username && loggedin
+    form(method='POST' action='/private')
+      if user.privacy
+        button.btn.btn-primary(type='submit') Unprivate
+      else
+        button.btn.btn-primary(type='submit') Set Private
+      br
+    form(method='GET' action='/logout')
+      button.btn.btn-primary(type='submit') Logout
+  p Total Quizzes: #{user.total_quizzes}
+  p Avg Score: #{score}

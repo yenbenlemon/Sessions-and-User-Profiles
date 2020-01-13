@@ -1,0 +1,9 @@
+html
+	head
+		title Users
+body
+	include header.pug
+	h1 Public Users
+	each person in users
+		a(href="/users/" + person.username) #{person.username}
+		br

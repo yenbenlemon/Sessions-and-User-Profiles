@@ -1,0 +1,25 @@
+html
+	head
+		title Random Quiz
+body(onload="init()")
+	include header.pug
+	h1 Random Quiz
+	- let i = 1;
+	for question in questions
+		-allAnswers = []
+		-allAnswers.push(question.correct_answer)
+		for incorrect in question.incorrect_answers
+			-allAnswers.push(incorrect)
+		div(id=question._id, class="question_div")
+			span #{i}. !{question.question}
+			br
+			-let answerCount = 0;
+			for answer in allAnswers
+				input(type="radio", id=question._id + "_" + answerCount, name=question._id, value=answer)
+				span !{answer}
+				br
+				-answerCount++;
+			br
+		-i++;
+	input(type="button", onclick="submit()" value="Submit")
+	script(src="/js/quiz.js")
